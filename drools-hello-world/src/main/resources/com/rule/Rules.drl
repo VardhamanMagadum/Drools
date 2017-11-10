@@ -1,0 +1,16 @@
+package com.rule
+
+import com.ruleProject.model.Person
+
+rule "Likely to get defaulted"
+	when 
+		personObject: Person(ficoScore <= 650)
+	then
+		personObject.setDefaultChances("Yes");
+	end
+rule "Not likely to get defaulted"
+	when 
+		personObject: Person(ficoScore >= 650)
+	then
+		personObject.setDefaultChances("No");
+	end
